@@ -16,11 +16,11 @@ thruster_List = [thruster_xy_frontRight, thruster_xy_frontLeft, thruster_xy_back
 
 def setup_ESC():
     for value in range(reverse_Max, foreward_Max):
-        for chanel in range(0,16):
+        for chanel in range(0,8):
             pwm.set_pwm(chanel, 0, value)
         time.sleep(0.1)
     for value in range(foreward_Max, reverse_Max):
-        for chanel in range(0,16):
+        for chanel in range(0,8):
             pwm.set_pwm(chanel, 0, value)
         time.sleep(0.1)
 
@@ -36,15 +36,14 @@ def thrusterMap(convert):
         return 383
     
 def callback(data):
-    for thruster in range(0,16):
+    for thruster in range(0,8):
         pwm.set_pwm(thruster, 0, thrusterMap(data.thruster_List[thruster]))
     
 def listener():
-    rospy.init_node('listener', anonymous=True)
-    rospy.Subscriber("chatter", String, callback)
+    rospy.init_node('thruster_int', anonymous=True)
+    rospy.Subscriber("thrusterinteger", int32, callback)
     rospy.spin()
 
 if __name__ == '__main__':
         listener()
-
-setup_ESC()
+        setup_ESC()
