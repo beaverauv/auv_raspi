@@ -29,7 +29,7 @@ def thrusterMap(convert):
                 return 383
 
 def callback(data):
-        print(type(data.thruster_xy_frontLeft))
+    print(type(data.thruster_xy_frontLeft))
 	pwm.set_pwm(0, 0, thrusterMap(data.thruster_xy_frontLeft))
 	pwm.set_pwm(1, 0, thrusterMap(data.thruster_z_frontLeft))
 	print(data.thruster_z_frontLeft)
