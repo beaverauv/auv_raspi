@@ -29,7 +29,7 @@ def thrusterMap(convert):
                 return 383
 
 def callback(data):
-    print(type(data.thruster_xy_frontLeft))
+    	print(type(data.thruster_xy_frontLeft))
 	pwm.set_pwm(0, 0, thrusterMap(data.thruster_xy_frontLeft))
 	pwm.set_pwm(1, 0, thrusterMap(data.thruster_z_frontLeft))
 	print(data.thruster_z_frontLeft)
@@ -42,8 +42,8 @@ def callback(data):
 	pwm.set_pwm(7, 0, thrusterMap(data.thruster_xy_frontRight))
 
 def listener():
-        rospy.init_node('thruster_ints', anonymous=True)
-        rospy.Subscriber('thruster_int', thruster_int, callback)
+        rospy.init_node('RaspiThrusterRecieve', anonymous=True)
+        rospy.Subscriber('thruster_values_int', thruster_int, callback)
         rospy.spin()
 
 if __name__ == '__main__':

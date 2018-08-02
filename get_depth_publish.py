@@ -2,10 +2,10 @@
 
 import rospy
 from std_msgs.msg import Float32
-import ms5837
+import include/ms5837.py
 
 def talker():
-	pub = rospy.Publisher('depth', Float32, queue_size=10)
+	pub = rospy.Publisher('state_heave', Float32, queue_size=10)
 	rospy.init_node('Depth Sensor', anonymous=True)
 	rate = rospy.Rate(10) # 10hz
 
