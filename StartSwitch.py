@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 
+#<node pkg ="auv_raspi" name = "StartSwitch" type = "StartSwitch.py" output="screen">
+#</node>
+
 import rospy
 from std_msgs.msg import Bool
 # import RPi.GPIO as GPIO
